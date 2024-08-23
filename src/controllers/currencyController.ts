@@ -53,11 +53,11 @@ export const convertCurrency = async (req: Request, res: Response): Promise<void
 
         // Creating the response object
         const result = {
-            originalAmount: amount,
+            amount: amount,
             convertedAmount: convertedAmount,
-            fromCurrency: from,
-            toCurrency: to,
-            conversionDate: new Date().toISOString()
+            from: from,
+            to: to,
+            date: new Date().toISOString()
         };
 
         // Sending the successful response using ApiResponse
