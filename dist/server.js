@@ -1,0 +1,38 @@
+"use strict";
+// import express, { Application } from 'express';
+// import dotenv from 'dotenv';
+// import cors from 'cors'; // Ensure this is correctly imported
+// import { router as currencyRoutes } from './routes/currencyRoutes';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// dotenv.config();
+// const app: Application = express();
+// const port = process.env.PORT || 3000;
+//  app.use(cors()); // Now cors should work without issues
+// app.use(express.json());
+// app.use('/api', currencyRoutes);
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+const express_1 = __importDefault(require("express"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
+const currencyRoutes_1 = require("./routes/currencyRoutes");
+dotenv_1.default.config();
+const app = (0, express_1.default)();
+const port = process.env.PORT || 3000;
+app.use((0, cors_1.default)({
+    origin: 'http://localhost:4200',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization'
+}));
+app.use(express_1.default.json());
+app.use('/api', currencyRoutes_1.router);
+app.get('/', (req, res) => {
+    res.redirect('/api/currencies');
+});
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});

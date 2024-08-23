@@ -34,7 +34,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use('/api', currencyRoutes);
-
+app.get('/', (req, res) => {
+  res.redirect('/api/currencies');
+});
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
