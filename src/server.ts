@@ -26,9 +26,8 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT || 3000;
 
-// CORS configuration
 app.use(cors({
-  origin: 'http://localhost:4200', // Replace with your Angular app's URL
+  origin: 'http://localhost:4200',
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization'
 }));
